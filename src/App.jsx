@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { puppyList } from "./data.js";
+import "./extra.css";
 
 function App() {
   const [puppies, setPuppies] = useState(puppyList); //const[value you are storing, a function you can use to reset the value]
@@ -14,20 +15,24 @@ function App() {
   return (
     <>
       <div className="App">
-        {puppies.map((puppy) => {
-          return (
-            <p
-              onClick={() => {
-                setFeatPupId(puppy.id);
-              }}
-              key={puppy.id}
-            >
-              {puppy.name}
-            </p>
-          ); //key maintains the integrity of the order of elements
-        })}
+        {" "}
+        {
+          // use className instead of class when in jsx
+          puppies.map((puppy) => {
+            return (
+              <p
+                onClick={() => {
+                  setFeatPupId(puppy.id);
+                }}
+                key={puppy.id}
+              >
+                {puppy.name}
+              </p>
+            ); //key maintains the integrity of the order of elements
+          })
+        }
         {featPupId && (
-          <div>
+          <div className="featured">
             <h2>{featuredPup.name}</h2>
             <ul>
               <li>Age: {featuredPup.age}</li>
